@@ -1,0 +1,14 @@
+Package: loveseq
+Title: RNA-seq tools for Alternative Hosts
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Andrew",
+           family = "Biedermann",
+           role = c("aut", "cre"),
+           email = "biederma@mit.edu")
+Description: RNA-seq tools for Alternative Hosts.
+License: GNU General Public License 3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
