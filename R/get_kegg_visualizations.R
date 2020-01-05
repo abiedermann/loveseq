@@ -1,5 +1,3 @@
-library(pathview)
-
 #' Given a dataframe with rows corresponding to genes and a column
 #' corresponding to sample or stat name, use pathview to visualize
 #' pathways in pathid.vector. Genes can be in any format.

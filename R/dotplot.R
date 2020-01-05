@@ -2,8 +2,6 @@
 #' @param df: data.frame containing fgsea results
 #' @param alpha: cutoff for adjp
 #' @return ggplot object containing dotplot of results
-library(forcats)
-library(ggplot2)
 dotplot <- function(df,title="",alpha=0.05){
   df$type <- "upregulated"
   df$type[df$NES<0] = "downregulated"

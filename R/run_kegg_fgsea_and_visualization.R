@@ -1,7 +1,3 @@
-library(fgsea)
-library(piano)
-library(pathview)
-
 #' Given a named vector (names=GQ and gene names, values=statistic for fgsea),
 #' run fgsea and use path view to visualize statistically significant
 #' pathways (padj < alpha). Genes can be in any format. Output pathview files
