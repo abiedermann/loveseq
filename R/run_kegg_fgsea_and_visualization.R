@@ -9,9 +9,7 @@ library(pathview)
 run_kegg_fgsea_and_visualization <- function(input.data,alpha=0.05,
 			            fgsea.result.fname='kegg_gsea_results.csv',
 				    subdir=".",
-                                    excluded.genes=c("Zeocin","P8","2KD1"),
-                                    kegg.gmt.filename='pichia_kegg_pathways.gmt',
-                                    kegg.pathinfo.filename='kegg_pathway_info.csv'){
+                                    excluded.genes=c("Zeocin","P8","2KD1")){
  
   # Filtering out experiment-specific genes that are not in the annotation file
   input.data = input.data[!(names(input.data) %in% excluded.genes)]
@@ -29,7 +27,6 @@ run_kegg_fgsea_and_visualization <- function(input.data,alpha=0.05,
   dir.create("./kegg_results")
   
   # Run fgsea on input.data
-  kegg.gmt <- loadGSC(kegg.gmt.filename,type='gmt')
   kegg.fgseaRes <- fgsea(pathways=kegg.gmt$gsc,stats=input.data,minSize=5,nperm=100000)
   
   kegg.fgseaRes <- kegg.fgseaRes[order(padj),]
@@ -38,8 +35,6 @@ run_kegg_fgsea_and_visualization <- function(input.data,alpha=0.05,
   if(length(fgsea.result.fname) > 0){
     write.csv(kegg.fgseaRes[,c('pathway','pval','padj','ES','NES','nMoreExtreme','size')],fgsea.result.fname)
   }
-  
-  kegg.pathinfo <- read.table(kegg.pathinfo.filename,header=TRUE,sep='\t',quote="\"",stringsAsFactors=FALSE)
   
   # Pulling pngs for each significant pathway found by fgsea
   for(i in 1:length(kegg.fgseaRes[which(kegg.fgseaRes$padj<alpha),]$pathway)){

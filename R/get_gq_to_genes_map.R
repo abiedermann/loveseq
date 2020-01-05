@@ -1,9 +1,6 @@
 #' Returns a list mapping gq accessions to gene names (where available).
-get_gq_to_genes_map <- function(annot.filename="2019Annotation.csv"){
-  counts <- read.table(annot.filename,header=TRUE,sep=',',quote="\"",row.names=1,stringsAsFactors=FALSE)
-  counts['chr'] <- NULL
-  counts['strand'] <- NULL
-  
+get_gq_to_genes_map <- function(){
+  counts <- annotation	
   # renaming rows where FinalSymbol is available
   named.idx <- counts[,'FinalSymbol']!=''
   counts$idx <- rownames(counts)

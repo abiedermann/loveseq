@@ -2,10 +2,8 @@
 #' accessions translated to PAS wherever possible.
 #' @param this.names: list containing mix of gene names and GQ accessions
 #' @return PAS translation of the original list
-get_PAS_from_mixed <- function(this.names,
-                            genome.annot.file='2019Annotation.csv'){
-  annot <- read.table(genome.annot.file,header=TRUE,sep=',',quote="\"",row.names=1,stringsAsFactors=FALSE)
-
+get_PAS_from_mixed <- function(this.names){
+  annot <- annotation
   gene.to.gq <- get_genes_to_gq_map()
   for(i in 1:length(this.names)){
     this.gene <- this.names[[i]]

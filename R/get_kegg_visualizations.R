@@ -7,8 +7,7 @@ library(pathview)
 #' appropriately for pathview visualization.
 #' Output pathview files are written to the subdir file. 
 get_kegg_visualizations <- function(input.data,pathid.vector,subdir=".",
-                                             excluded.genes=c("Zeocin","P8"),
-                                             kegg.pathinfo.filename='/Users/biedermann/Dropbox (MIT)/01 Research/01 Experiments/190718_altcarbon_study/190919_RNA-seq/kegg_pathway_info.csv'){
+                                             excluded.genes=c("Zeocin","P8")){
  
   # Filtering out experiment-specific genes that are not in the annotation file
   input.data = input.data[!(rownames(input.data) %in% excluded.genes),]
