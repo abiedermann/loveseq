@@ -7,17 +7,17 @@ Authors@R:
            role = c("aut", "cre"),
            email = "biederma@mit.edu")
 Description: RNA-seq tools for Alternative Hosts.
-Depends:
-    fastcluster
-    parallelDist
-    forcats
-    ggplot2
-    pathview
-    fgsea
-    piano
-    grid
-    ggthemes
-    scales
+Imports:
+	fastcluster,
+	parallelDist,
+	forcats,
+	ggplot2,
+	pathview,
+	fgsea,
+	piano,
+	grid,
+	ggthemes,
+	scales
 License: GNU General Public License 3
 Encoding: UTF-8
 LazyData: true
