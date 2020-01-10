@@ -2,8 +2,8 @@ library(usethis)
 library(piano)
 
 # Loading most up-to-date version of genome annotation
-annotation <- read.table("data-raw/2019Annotation.csv",header=TRUE,sep=',',quote="\"",
-		     row.names=1,stringsAsFactors=FALSE)
+annotation <- read.table("data-raw/20200108Annotation.csv",header=T,sep=',',
+		row.names=1,quote="\"",stringsAsFactors=F,na.strings="\"\"")
 
 # Pichia kegg genesets and accompanying annotations
 kegg.gmt <- loadGSC("data-raw/pichia_kegg_pathways.gmt",type='gmt')

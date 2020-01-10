@@ -1,0 +1,46 @@
+
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin18.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> library(usethis)
+> library(piano)
+Registered S3 method overwritten by 'ggplot2':
+  method        from
+  print.element sets
+> 
+> # Loading most up-to-date version of genome annotation
+> annotation <- read.table("data-raw/20200108Annotation.csv",header=T,sep=',',
++ 			 quote="\"",stringsAsFactors=F,na.strings="\"\"")
+> 
+> # Pichia kegg genesets and accompanying annotations
+> kegg.gmt <- loadGSC("data-raw/pichia_kegg_pathways.gmt",type='gmt')
+> kegg.pathinfo <- read.table("data-raw/kegg_pathway_info.csv",header=TRUE,
++ 			    sep='\t',quote="\"",stringsAsFactors=FALSE)
+> 
+> 
+> # Note: Very important for internal=T here. This makes the data visible to
+> #       functions in the package
+> usethis::use_data(annotation,kegg.gmt,kegg.pathinfo,overwrite=T,internal=T)
+✔ Setting active project to '/Users/biedermann/Dropbox (MIT)/01 Research/03 Code/loveseq'
+✔ Saving 'annotation', 'kegg.gmt', 'kegg.pathinfo' to 'R/sysdata.rda'
+> 
+> proc.time()
+   user  system elapsed 
+  5.035   0.453   6.294 
