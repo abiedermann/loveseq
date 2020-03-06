@@ -3,6 +3,7 @@
 #' @param alpha: cutoff for adjp
 #' @return ggplot object containing dotplot of results
 dotplot <- function(df,title="",alpha=0.05){
+  library(forcats)
   df$type <- "upregulated"
   df$type[df$NES<0] = "downregulated"
 
@@ -12,9 +13,9 @@ dotplot <- function(df,title="",alpha=0.05){
   }
   df$geneRatio <- geneRatio
 
-  this.kegg.fgseaRes <- df[padj<alpha,]
+  this.kegg.fgseaRes <- df[df$padj<alpha,]
   p <- ggplot(this.kegg.fgseaRes,aes(x=geneRatio,y=fct_reorder(pathway, geneRatio))) +
-      geom_point(aes(size=size, color=padj)) +
+      geom_point(aes(size=size, color=this.kegg.fgseaRes$padj)) +
       theme_bw(base_size = 14) +
         scale_colour_gradient(limits=c(0, alpha), low="red") +
         ylab(NULL) + labs(size="Gene set size") +

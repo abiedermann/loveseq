@@ -6,7 +6,9 @@ run_kegg_fgsea_and_visualization <- function(input.data,alpha=0.05,
 			            fgsea.result.fname='kegg_gsea_results.csv',
 				    subdir=".",
                                     excluded.genes=c("Zeocin","P8","2KD1")){
- 
+  library(fgsea)
+  library(pathview)
+
   # Filtering out experiment-specific genes that are not in the annotation file
   input.data = input.data[!(names(input.data) %in% excluded.genes)]
 
@@ -24,8 +26,7 @@ run_kegg_fgsea_and_visualization <- function(input.data,alpha=0.05,
   
   # Run fgsea on input.data
   kegg.fgseaRes <- fgsea(pathways=kegg.gmt$gsc,stats=input.data,minSize=5,nperm=100000)
-  
-  kegg.fgseaRes <- kegg.fgseaRes[order(padj),]
+  kegg.fgseaRes <- kegg.fgseaRes[order(kegg.fgseaRes$padj),]
   
   # Output fgsea results
   if(length(fgsea.result.fname) > 0){
