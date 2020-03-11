@@ -8,14 +8,14 @@ get_kegg_visualizations <- function(input.data,pathid.vector,subdir=".",
                                              excluded.genes=c("Zeocin","P8")){
  
   # Filtering out experiment-specific genes that are not in the annotation file
-  input.data = input.data[!(rownames(input.data) %in% excluded.genes),]
+  input.data = input.data[!(rownames(input.data) %in% excluded.genes),,drop=F]
 
   # convert rownames to PAS format
   rownames(input.data) <- get_PAS_from_mixed(rownames(input.data))
   
   # converting from dataframe to a named vector (to fit fgsea input)
   input.data.names <- rownames(input.data)
-  input.data <- as.numeric(input.data)
+  input.data <- as.numeric(as.matrix(input.data))
   names(input.data) <- input.data.names
   
   # Save current directory
