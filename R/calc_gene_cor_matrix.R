@@ -10,11 +10,11 @@ calc_gene_correlation_matrix <- function(df){
     library(fastcluster)
     library(parallelDist)
     # Dropping rows with zero variance
-    this.df <- df[which(apply(df,1,var) > 0),]
+    this.df <- as.matrix(df[which(apply(df,1,var) > 0),])
     # Calculating gene-to-gene correlation matrix
     gene.cors <- cor(t(this.df),t(this.df))
     # Note: by default, parDist used the maximum number of cpu threads available
-    this.hres <- fastcluster::hclust(parDist(gene.cors))
+    this.hres <- fastcluster::hclust(parDist(as.matrix(gene.cors)))
     gene.cors <- gene.cors[this.hres$order,this.hres$order]
     return(list(gene.cors,this.hres))
 }
