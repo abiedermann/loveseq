@@ -2,7 +2,7 @@ library(usethis)
 library(piano)
 
 # Loading most up-to-date version of genome annotation
-annotation <- read.table("data-raw/20200108Annotation.csv",header=T,sep=',',
+annotation <- read.table("data-raw/20200108Annotation_plusTFlist.csv",header=T,sep=',',
 		row.names=1,quote="\"",stringsAsFactors=F,na.strings="\"\"")
 
 # Pichia kegg genesets and accompanying annotations
