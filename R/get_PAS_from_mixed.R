@@ -16,6 +16,9 @@ get_PAS_from_mixed <- function(this.names){
     if(this.gene %in% names(gene.to.gq)){
       this.gene <- gene.to.gq[this.gene]
     }
+    if(!(as.character(this.gene) %in% rownames(annot['PAS_names']))){
+        next
+    }
     if(nchar(as.character(annot['PAS_names'][as.character(this.gene),])) > 0){
       this.names[[i]] <- annot['PAS_names'][as.character(this.gene),]
     }

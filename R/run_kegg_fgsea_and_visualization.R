@@ -9,9 +9,6 @@ run_kegg_fgsea_and_visualization <- function(input.data,alpha=0.05,
   library(fgsea)
   library(pathview)
 
-  # Filtering out experiment-specific genes that are not in the annotation file
-  input.data = input.data[!(names(input.data) %in% excluded.genes)]
-
   # convert rownames to PAS format
   names(input.data) <- get_PAS_from_mixed(names(input.data))
   
